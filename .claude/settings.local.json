@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk -F: '{print $1, $2}')",
+      "Bash(awk 'NR>=85 && NR<=100')"
+    ]
+  }
+}

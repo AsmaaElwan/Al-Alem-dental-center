@@ -1,0 +1,2467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Alem Dental Center | رويال لطب الأسنان</title>
+<link rel="stylesheet" href="assets/css/style.css?v=108"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  /* ── WhatsApp button ── */
+  .wa-float {
+    background: #25D366 !important;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35) !important;
+    animation: wa-bounce 1s ease-in-out infinite !important;
+  }
+  .wa-float--ar {
+    right: 0.5% !important;
+    left: auto !important;
+    top: calc(95vh - 28px) !important;
+    bottom: auto !important;
+  }
+  .wa-float:hover {
+    background: #1da851 !important;
+    box-shadow: 0 6px 22px rgba(37,211,102,0.50) !important;
+  }
+
+  /* ── Brand gradient buttons ── */
+  .footer-cta-btn,
+  .btn-book {
+    background: linear-gradient(135deg, #b0b4bb 0%, #7e828b 40%, #4a4e56 100%) !important;
+    box-shadow: 0 4px 16px rgba(74,78,86,0.35) !important;
+  }
+  .footer-cta-btn:hover,
+  .btn-book:hover {
+    background: linear-gradient(135deg, #9a9ea6 0%, #6a6e76 40%, #3a3e46 100%) !important;
+    box-shadow: 0 6px 22px rgba(74,78,86,0.50) !important;
+  }
+
+  /* ── Dropdown ── */
+  .nav-has-drop { position:relative; display:flex; align-items:center; gap:1px; }
+  .nav-dropdown {
+    display:none; position:absolute; top:calc(100% + 10px); right:0;
+    background:#f8f4ed; border-radius:14px; min-width:240px;
+    box-shadow:0 8px 32px rgba(100,60,30,0.14); border:1.5px solid rgba(177,116,87,0.18);
+    z-index:9999; padding:8px 0; overflow:hidden;
+  }
+  .nav-has-drop:hover .nav-dropdown,
+  .nav-has-drop:focus-within .nav-dropdown,
+  .nav-has-drop.drop-open .nav-dropdown { display:block; }
+  .nav-dropdown-header {
+    font-size:11px; font-weight:700; color:#b27b61; letter-spacing:1px;
+    padding:10px 18px 6px; border-bottom:1px solid rgba(177,116,87,0.15); margin-bottom:4px;
+  }
+  .nav-dropdown a {
+    display:block; padding:9px 18px; font-size:12px; font-weight:600;
+    color:#3a2e28; text-decoration:none; border-bottom:1px solid rgba(177,116,87,0.07);
+    transition:background 0.2s, color 0.2s, padding-right 0.2s; position:relative;
+  }
+  .nav-dropdown a:last-child { border-bottom:none; }
+  .nav-dropdown a:hover { background:rgba(216,210,194,0.35); color:#b27b61; padding-right:22px; }
+  .nav-dropdown a::before {
+    content:''; position:absolute; right:10px; top:50%; transform:translateY(-50%);
+    width:4px; height:4px; border-radius:50%; background:#dacfc3; transition:background 0.2s;
+  }
+  .nav-dropdown a:hover::before { background:#b27b61; }
+  .drop-toggle {
+    background:none; border:none; cursor:pointer; font-size:11px;
+    color:#5d5e5c; padding:2px 3px; line-height:1; transition:transform 0.25s;
+  }
+  .nav-has-drop.drop-open .drop-toggle { transform:rotate(180deg); }
+  /* ── Hero line-1 Arabic: smaller to fit on one line ── */
+  .hero-line-1 { font-size: clamp(20px, 2.2vw, 30px) !important; white-space: nowrap; }
+
+  /* ── Hero — RTL: نص على اليمين في كل المقاسات من 530px لفوق ── */
+  @media (min-width: 530px) {
+    .hero-wrapper {
+      justify-content: flex-start;
+    }
+    .hero-slides {
+      transform: scaleX(-1);
+    }
+    .hero-overlay {
+      background: linear-gradient(
+        to left,
+        rgba(0,0,0,0.72) 0%,
+        rgba(0,0,0,0.50) 38%,
+        rgba(0,0,0,0.10) 62%,
+        rgba(0,0,0,0.00) 100%
+      );
+    }
+  }
+
+  /* ── Testimonials — RTL: panel (يسار), كتاب (يمين) ── */
+
+  /* CTA panel: extend outward (left) and overlap into book (right) */
+  .testi-cta-side {
+    margin-left:  -60px;
+    margin-right: -60px;
+    padding: 20px 60px 4px 60px;
+    z-index: 1;
+  }
+
+  /* Book wrap: natural size, above CTA panel */
+  .pb-stage .pb-book-wrap {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    align-items: flex-end;
+    margin-right: 0px;
+  }
+
+  /* Book clip-wrap: extend slightly past container right edge */
+  #pbClipWrap {
+    margin: 0 -55px 14px 0;
+    transform: translateX(-80px);
+  }
+
+  /* Separator: RTL gradient (gold on right → transparent on left) */
+  .testi-cta-sep {
+    background: linear-gradient(to left, var(--mint), transparent);
+  }
+
+  /* Quote block: RTL — quote mark sits on the right */
+  .testi-cta-quote-block {
+    padding-right: 18px;
+    padding-left: 0;
+  }
+
+  /* ── max-width 529px: column layout (book on top, CTA below) ── */
+  @media (max-width: 529px) {
+    .pb-stage      { flex-direction: column !important; align-items: stretch; gap: 0; overflow: hidden; }
+    .pb-stage .pb-book-wrap { order: 1; flex: 0 0 auto !important; width: 100%; border-radius: 14px 14px 0 0 !important; align-items: center; overflow: hidden; }
+    .testi-cta-side {
+      order: 2;
+      flex: 0 0 auto !important;
+      width: 100%;
+      height: auto !important;
+      min-height: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 20px 16px 48px;
+      border-radius: 0 0 14px 14px !important;
+      overflow: visible;
+    }
+    #pbClipWrap { margin: 0 0 6px 0; display: flex; justify-content: center; transform: translateX(-50px); }
+    .pb-controls { margin: 0 auto; width: 115px; }
+    #pbClipWrap.expanded ~ .pb-controls { width: 230px; }
+  }
+  /* ── Force column for 400–529px ── */
+  @media (min-width: 400px) and (max-width: 529px) {
+    .testimonials .pb-stage { flex-direction: column !important; }
+    .testimonials .testi-cta-side {
+      order: 2 !important;
+      flex: 0 0 auto !important;
+      width: 100% !important;
+      height: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      border-radius: 0 0 14px 14px !important;
+    }
+  }
+
+  /* ── 530–767px: row ── */
+  @media (min-width: 530px) and (max-width: 767px) {
+    .pb-stage      { flex-direction: row !important; overflow: hidden; align-items: stretch; }
+    .pb-book-wrap  { overflow: hidden; align-items: center; }
+    .testi-cta-side .btn-about-primary   { font-size: 10px; padding: 6px 12px; white-space: nowrap; }
+    .testi-cta-side .btn-about-secondary { font-size: 10px; white-space: nowrap; }
+    .testi-cta-side .about-btns { gap: 6px; flex-wrap: wrap; align-items: center; }
+    .testi-cta-side .btn-about-secondary .play-icon { width: 22px; height: 22px; border-width: 1.5px; }
+    .testi-cta-side .btn-about-secondary .play-icon svg { width: 9px; height: 9px; }
+    #pbClipWrap { margin: 0 0 10px 0; display: flex; justify-content: center; transform: none; }
+    .pb-controls { margin: 0 auto; width: 144px; }
+    #pbClipWrap.expanded ~ .pb-controls { width: 288px; }
+  }
+
+  /* ── 530–599px: خط أصغر لشاشات الموبايل الصغيرة ── */
+  @media (min-width: 530px) and (max-width: 599px) {
+    .testi-cta-side {
+      margin-left:  0;
+      margin-right: 0;
+      padding: 10px 12px 8px 12px;
+    }
+    .testi-cta-title     { font-size: 0.92rem; line-height: 1.2; }
+    .testi-quote-mark    { font-size: 1.6rem; margin-bottom: -3px; }
+    .testi-quote-text    { font-size: 0.85rem; line-height: 1.45; }
+    .testi-contact-label { font-size: 0.82rem; line-height: 1.35; margin-bottom: 1px; }
+    .testi-phone-num     { font-size: 0.90rem; letter-spacing: 0; }
+    .testi-cta-closing   { font-size: 0.82rem; }
+    .testi-cta-side .about-btns                              { gap: 4px; margin-top: 0; }
+    .testi-cta-side .btn-about-primary                       { font-size: 11px; padding: 4px 8px; }
+    .testi-cta-side .btn-about-secondary                     { font-size: 11px; gap: 3px; }
+    .testi-cta-side .btn-about-secondary .play-icon          { width: 18px; height: 18px; }
+    .testi-cta-side .btn-about-secondary .play-icon svg      { width: 7px; height: 7px; }
+  }
+
+  /* ── 600–767px: تقليل الخط والـ padding ── */
+  @media (min-width: 600px) and (max-width: 767px) {
+    .testi-cta-side {
+      margin-left:  0;
+      margin-right: 0;
+      padding: 12px 14px 10px 14px;
+    }
+    .testi-cta-title     { font-size: 0.88rem; line-height: 1.2; }
+    .testi-quote-mark    { font-size: 2.0rem; margin-bottom: -4px; }
+    .testi-quote-text    { font-size: 0.90rem; line-height: 1.5; }
+    .testi-contact-label { font-size: 0.88rem; line-height: 1.35; margin-bottom: 1px; }
+    .testi-phone-num     { font-size: 0.95rem; letter-spacing: 0; }
+    .testi-cta-closing   { font-size: 0.88rem; }
+    .testi-cta-side .about-btns       { gap: 5px; flex-wrap: wrap; margin-top: 2px; }
+    .testi-cta-side .btn-about-primary  { font-size: 11px; padding: 5px 10px; white-space: nowrap; }
+    .testi-cta-side .btn-about-secondary { font-size: 11px; gap: 3px; white-space: nowrap; }
+    .testi-cta-side .btn-about-secondary .play-icon     { width: 20px; height: 20px; }
+    .testi-cta-side .btn-about-secondary .play-icon svg { width: 8px; height: 8px; }
+  }
+
+  /* ── 768–960px ── */
+  @media (min-width: 768px) and (max-width: 960px) {
+    .testi-cta-side {
+      padding: 16px 18px 14px 18px;
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 20px 0 0 20px;
+    }
+    .testi-quote-mark    { font-size: 2.4rem; margin-bottom: -4px; }
+    .testi-quote-text    { font-size: 0.93rem; line-height: 1.6; }
+    .testi-cta-title     { font-size: 0.78rem; line-height: 1.2; }
+    .testi-contact-label { font-size: 0.88rem; line-height: 1.4; }
+    .testi-phone-num     { font-size: 0.78rem; letter-spacing: 0; }
+    .testi-cta-closing   { font-size: 0.90rem; }
+    .testi-cta-side .btn-about-primary   { font-size: 10px; padding: 6px 12px; white-space: nowrap; }
+    .testi-cta-side .btn-about-secondary { font-size: 10px; gap: 5px; white-space: nowrap; }
+    .testi-cta-side .about-btns { gap: 6px; flex-wrap: wrap; }
+    #pbClipWrap    { margin: 12px 0 24px 0; }
+    .pb-controls   { margin-left: 0; width: 173px; }
+    #pbClipWrap.expanded ~ .pb-controls { width: 346px; }
+  }
+
+  /* ── 961–1280px ── */
+@media (min-width: 961px) {
+    .hero-booking-form { margin: -520px auto 0 40px !important; }
+  }
+  @media (min-width: 961px) and (max-width: 1280px) {
+    .testi-cta-side { margin-left: 0; margin-right: 0; border-radius: 20px 0 0 20px; }
+    #pbClipWrap    { margin: 16px 0 30px 0; }
+    .pb-controls   { margin-left: 0; width: 209px; }
+    #pbClipWrap.expanded ~ .pb-controls { width: 418px; }
+  }
+
+  /* ── 1600px+ ── */
+  @media (min-width: 1600px) {
+    .testi-cta-side { margin-left: 0 !important; margin-right: 0; }
+    #pbClipWrap     { margin: 40px 0 60px 0; }
+    .pb-controls    { margin-left: 0; }
+  }
+
+  /* ── 1920px+ ── */
+  @media (min-width: 1920px) {
+    .testi-cta-side { margin-left: 0 !important; margin-right: 0; }
+    #pbClipWrap     { margin: 40px -15px 60px 0; }
+    .pb-controls    { margin-left: -15px; }
+  }
+
+  /* ── Hero Booking Form ── */
+  .hero-booking-form {
+    position: relative;
+    z-index: 100;
+    background: linear-gradient(135deg, rgba(200,202,206,0.95) 0%, rgba(160,163,170,0.95) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 48px 36px 44px;
+    margin: -560px auto 0 40px;
+    max-width: 360px;
+    direction: rtl;
+    border-top: 4px solid var(--mint);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+  .hbf-title {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(90deg, #111111 0%, #3E3E3E 60%, #9a9ea6 85%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hbf-divider {
+    width: 60px; height: 3px;
+    background: var(--mint);
+    border-radius: 2px;
+    margin: 0 auto 20px;
+  }
+  .hbf-form { display: flex; flex-direction: column; gap: 13px; }
+  .hbf-field { display: flex; flex-direction: column; gap: 4px; }
+  .hbf-field label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #111111 0%, #3E3E3E 60%, #7E828B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hbf-req { color: #7E828B !important; -webkit-text-fill-color: #7E828B !important; }
+  .hbf-field input, .hbf-field select {
+    border: 1.5px solid rgba(126,130,139,0.4);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    background: rgba(255,255,255,0.55);
+    color: #3E3E3E;
+    outline: 0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: right;
+    direction: rtl;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hbf-field input::placeholder { color: #7E828B; }
+  .hbf-field select { color: #7E828B; background: rgba(255,255,255,0.55); -webkit-appearance: none; appearance: none; }
+  .hbf-field select.selected { color: #3E3E3E; background: rgba(255,255,255,0.55); }
+  .hbf-field select option { background: #fff; color: #3E3E3E; }
+  .hbf-field select option[value=""] { color: #7E828B; }
+  .hbf-field input:focus, .hbf-field select:focus {
+    border-color: var(--mint);
+    box-shadow: 0 0 0 3px rgba(126,130,139,0.15);
+  }
+  .hbf-submit {
+    background: var(--dark);
+    color: #fff;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.25s, transform 0.2s;
+    width: 100%;
+  }
+  .hbf-submit:hover { background: var(--mint); transform: translateY(-2px); }
+  .hbf-submit.loading { pointer-events: none; opacity: 0.8; }
+  .hbf-submit.loading::after {
+    content: '';
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes btn-spin { to { transform: rotate(360deg); } }
+  @media (max-width: 960px) {
+    .hero-booking-form {
+      display: block;
+      margin: 30px auto 0 !important;
+      width: 90%;
+      max-width: 420px;
+      position: static;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 960px) {
+    .hero-booking-form {
+      margin: -340px auto 0 20px !important;
+      transform: translateY(-60px) !important;
+      max-width: 280px !important;
+      padding: 22px 18px 18px !important;
+      position: relative !important;
+      display: block !important;
+    }
+  }
+
+  /* ── Hero mobile override ── */
+  @media (max-width: 960px) {
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.40) 35%,
+        rgba(0,0,0,0.65) 65%,
+        rgba(0,0,0,0.80) 100%
+      ) !important;
+    }
+    .hero-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.20) 50%, rgba(0,0,0,0.00) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    html body .hero-wrapper .hero-content {
+      position: absolute !important;
+      left: 0 !important; right: 0 !important;
+      top: auto !important; bottom: 210px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 16px 16px 22px !important;
+      justify-content: flex-end !important;
+      background: transparent !important;
+      transform: none !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .about-title br { display: none; }
+    .about-title .about-gray,
+    .about-title .about-highlight { display: inline; }
+  }
+
+  /* ── Hero line text gradient (all screens) ── */
+  html[lang="ar"] .hero-line-1 {
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 60%, #dde0e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: brightness(1.15);
+  }
+  html[lang="ar"] .hero-line-2 {
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 70%, #d8dce2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: brightness(1.15);
+  }
+
+  /* ── Hero text backgrounds (all screens) ── */
+  html[lang="ar"] .eyebrow-text {
+    background: rgba(62, 62, 62, 0.55);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  html[lang="ar"] .hero-line-1 .hl-bg {
+    background: rgba(126, 130, 139, 0.50);
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: inline;
+  }
+  html[lang="ar"] .hero-line-2 .hl-bg {
+    background: rgba(62, 62, 62, 0.55);
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: inline;
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 767px) {
+    html[lang="ar"] .hero-line-1,
+    html[lang="ar"] .hero-line-2 {
+      font-size: 18px !important;
+    }
+    html[lang="ar"] .hero-title {
+      gap: 4px !important;
+    }
+    html[lang="ar"] .eyebrow-text {
+      margin-bottom: 6px !important;
+    }
+    html[lang="ar"] .hero-line-2 {
+      margin-top: -18px !important;
+    }
+  }
+  @media (max-width: 480px) {
+    html[lang="ar"] .hero-line-1,
+    html[lang="ar"] .hero-line-2 {
+      font-size: 16px !important;
+    }
+  }
+  @media (max-width: 500px) {
+    html[lang="ar"] .hero-line-1,
+    html[lang="ar"] .hero-line-2 {
+      font-size: 13px !important;
+    }
+    html body .hero-wrapper .hero-content {
+      bottom: 140px !important;
+    }
+  }
+
+  @media (max-width: 991px) {
+    html[lang="ar"] .hero-eyebrow {
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: heroFadeUp 1.0s ease both;
+      animation-delay: 0.2s;
+    }
+    html[lang="ar"] .eyebrow-text {
+      white-space: nowrap;
+      font-size: clamp(8px, 2.5vw, 13px) !important;
+      letter-spacing: 0.2px !important;
+    }
+    html[lang="ar"] .hero-line-1 {
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background-clip: unset !important;
+      padding: 0 !important;
+      display: block !important;
+      animation: heroFadeUp 1.1s ease both;
+      animation-delay: 0.5s;
+    }
+    html[lang="ar"] .hero-line-2 {
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background-clip: unset !important;
+      padding: 0 !important;
+      display: block !important;
+      animation: heroFadeUp 1.1s ease both;
+      animation-delay: 0.85s;
+    }
+    html[lang="ar"] .hero-line-1 .hl-bg {
+      background: rgba(126, 130, 139, 0.50);
+      padding: 6px 14px;
+      border-radius: 6px;
+      display: inline;
+    }
+    html[lang="ar"] .hero-line-2 .hl-bg {
+      background: rgba(62, 62, 62, 0.55);
+      padding: 6px 14px;
+      border-radius: 6px;
+      display: inline;
+    }
+  }
+  .site-footer .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 2.5% !important;
+    padding-right: 2.5% !important;
+  }
+</style>
+  <link rel="preload" href="assets/img/vid-thumbs/1.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/2.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/3.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/4.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/5.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/6.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/7.jpg" as="image">
+  <link rel="preload" href="assets/img/vid-thumbs/8.jpg" as="image">
+  <style>
+    @media (max-width: 375px) {
+      section {
+        width: 95% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Outer animated background -->
+  <div id="body-bg-wrap" aria-hidden="true"></div>
+
+  <div id="page-wrap">
+
+  <!-- Animated background with Ken Burns effect -->
+  <div id="bg-fixed-clip" aria-hidden="true">
+    <div id="bg-fixed-wrap"></div>
+  </div>
+  <div id="bg-fixed-overlay" aria-hidden="true"></div>
+  <!-- Navbar -->
+  <!-- Hero Section -->
+  <section class="hero" style="position:relative;">
+
+    <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <img src="assets/img/Al.Alem Logo Edit.png" alt="مركز د.العالم" class="logo-img">
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#about">د. العالم</a></li>
+        <li><a href="#results">التحولات</a></li>
+        <li><a href="#video-testimonials">قصص المرضى</a></li>
+        <li><a href="#testimonials">الآراء</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn-lang">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          English
+        </a>
+        <a href="tel:15180" class="btn-book">احجز الآن</a>
+      </div>
+
+      <!-- Hamburger button — visible only on < 500px -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة" aria-expanded="false" onclick="var o=document.getElementById('mobileNavOverlay');var open=o.classList.toggle('is-open');this.classList.toggle('is-open',open);this.setAttribute('aria-expanded',String(open));">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+          <path class="hb-line hb-line--1" d="M0 40h62c13 0 6 28-4 18L35 35"/>
+          <path class="hb-line hb-line--2" d="M0 50h70"/>
+          <path class="hb-line hb-line--3" d="M0 60h62c13 0 6-28-4-18L35 65"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay — visible only on < 500px -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <canvas id="navParticles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.45;"></canvas>
+    <ul class="mobile-nav-links">
+      <li><a href="#about">د. العالم</a></li>
+      <li><a href="#results">التحولات</a></li>
+      <li><a href="#video-testimonials">قصص المرضى</a></li>
+      <li><a href="#testimonials">الآراء</a></li>
+      <li><a href="index.html" class="mobile-lang-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:6px;margin-bottom:1px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>English</a></li>
+    </ul>
+  </div>
+
+    <div class="hero-wrapper">
+
+      <!-- Service slides -->
+      <div class="hero-slides">
+        <img src="assets/img/hero_cover_royal/psd.png" class="hero-slide" alt="">
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">مرحباً بكم في مركز د. العالم لطب الأسنان</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-line-1"><span class="hl-bg">نصنع ابتسامة</span></span>
+          <span class="hero-line-2 highlight"><span class="hl-bg">تغير حياة</span></span>
+        </h1>
+
+      </div>
+
+
+    </div>
+
+    <!-- Booking Form outside hero-wrapper -->
+    <div class="hero-booking-form">
+      <h2 class="hbf-title" style="text-align:center;">احجز موعدك</h2>
+      <div class="hbf-divider"></div>
+      <form class="hbf-form" id="heroBookingFormAr" novalidate>
+        <div class="hbf-field hbf-full">
+          <label>الاسم <span class="hbf-req">*</span></label>
+          <input type="text" name="name" required placeholder="أدخل اسمك">
+        </div>
+        <div class="hbf-field hbf-full">
+          <label>رقم الهاتف <span class="hbf-req">*</span></label>
+          <input type="tel" name="phone" required placeholder="01xxxxxxxxx" style="direction:ltr;text-align:left;">
+        </div>
+        <div class="hbf-field hbf-full">
+          <label>الخدمة المطلوبة <span class="hbf-req">*</span></label>
+          <select name="service" required>
+            <option value="">اختر الخدمة</option>
+            <option>التبييض</option>
+            <option>تاج الأسنان</option>
+            <option>تقويم الأسنان</option>
+            <option>حشو الأسنان التجميلي</option>
+            <option>زراعة الأسنان</option>
+            <option>طب أسنان الأطفال</option>
+            <option>قشور الأسنان</option>
+            <option>قناة الجذر</option>
+          </select>
+        </div>
+        <button type="submit" class="hbf-submit">إرسال</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Accordion Script -->
+  <script>
+    document.querySelectorAll('.acc-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
+    // Counter Cards
+    const counters = document.querySelectorAll('.counter-num');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = +el.dataset.target;
+          const duration = 1800;
+          const step = target / (duration / 16);
+          let current = 0;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = Math.floor(current);
+          }, 16);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+  </script>
+
+  <!-- Splitting.js -->
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+  <!-- CountUp.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+
+  <svg style="display:none" aria-hidden="true">
+    <filter id="brand-tint" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="
+        0.253 0.497 0.097 0 0
+        0.246 0.484 0.094 0 0
+        0.228 0.447 0.087 0 0
+        0     0     0     1 0"/>
+    </filter>
+  </svg>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <style>
+      @media (max-width: 767px) {
+        section#about { margin-top: 40px !important; }
+        section#results { transform: translateX(8px) !important; margin-top: 40px !important; }
+        section#video-testimonials { transform: translateX(10px) !important; }
+      }
+      .about .container { max-width: 100%; padding: 0 2.5%; }
+      .about-m {
+        background: transparent;
+        border-radius: 28px;
+        box-shadow: 0 4px 32px rgba(126,130,139,0.10);
+        overflow: hidden;
+      }
+      .about-m-top {
+        padding: 8px 36px;
+        background: transparent;
+      }
+      .about-m-eyebrow {
+        font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+        color: rgba(255,255,255,0.75); margin: 0 0 10px;
+        display: flex; align-items: center; gap: 8px;
+      }
+      .about-m-eyebrow::before { content:''; display:block; width:22px; height:1.5px; background:rgba(255,255,255,0.75); }
+      .about-m-name { font-size: 2rem; font-weight: 800; color: #fff; margin: 0 0 4px; line-height: 1.15; }
+      .about-m-role { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: 500; margin: 0; }
+      .about-m-bottom {
+        min-height: 450px;
+        position: relative;
+      }
+      .about-m-cols {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        direction: ltr;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.35);
+        position: relative;
+        background: rgba(80, 84, 90, 0.82);
+      }
+      .about-m-photo {
+        position: relative;
+        background: transparent;
+        overflow: visible;
+        order: 2;
+        z-index: 1;
+      }
+      .about-m-photo img {
+        border-radius: 20px 20px 0 0;
+      }
+      .about-m-right {
+        order: 1;
+        direction: rtl;
+      }
+      .about-m-photo img {
+        width: 100%; height: auto;
+        display: block;
+      }
+      .about-m-pills {
+        position: absolute;
+        left: 0; top: 5%; transform: translateX(-75%);
+        display: flex; flex-direction: column; gap: 14px;
+      }
+      .about-m-pill {
+        background: rgba(62,62,62,0.88);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        font-size: 13px; font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 30px;
+        display: flex; align-items: center; gap: 10px;
+        white-space: nowrap;
+        border: 1px solid rgba(255,255,255,0.15);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .about-m-pill.pill-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .about-m-pill svg { flex-shrink: 0; }
+      .about-m-right {
+        background: linear-gradient(135deg, rgba(62,62,62,0.72) 0%, rgba(126,130,139,0.55) 50%, rgba(62,62,62,0.72) 100%);
+        padding: 16px 28px 16px 28px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      @media (min-width: 961px) and (max-width: 1280px) {
+        .about-m-right { justify-content: flex-start !important; gap: 12px !important; padding-top: 60px !important; padding-right: 20% !important; }
+        .about-m-bio { max-width: 280px !important; margin-right: 120px !important; margin-left: auto !important; }
+        .about-m-cta { margin-right: 120px !important; }
+      }
+      @media (min-width: 1440px) {
+        .about-m-cols { grid-template-columns: 500px 380px !important; }
+        .about-m-right { justify-content: flex-start !important; gap: 4px !important; align-items: flex-start !important; padding-top: 160px !important; }
+        .about-m-bio { max-width: 450px !important; margin-right: auto !important; margin-left: 0 !important; }
+        .about-m-cta { margin-right: auto !important; }
+        .about-m-pills { transform: translateX(-65%) !important; }
+        .about-m-photo { margin-left: 120px !important; width: 80% !important; margin-top: 36px !important; }
+      }
+      .about-m-right-mobile { display: none; }
+      @media (max-width: 960px) {
+        .about-m-pills { display: none !important; }
+      }
+      .about-m-pills-mobile {
+        display: none;
+      }
+      @media (max-width: 767px) {
+        .about-m-photo { overflow: visible !important; }
+        .about-m-pills-mobile {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 8px !important;
+          position: absolute !important;
+          left: 0 !important;
+          top: 10% !important;
+          transform: translateX(10%) !important;
+          z-index: 10 !important;
+        }
+        .about-m-pills-mobile .about-m-pill {
+          opacity: 1 !important;
+          transform: none !important;
+          font-size: 9px !important;
+          padding: 6px 11px !important;
+          gap: 6px !important;
+          white-space: nowrap !important;
+        }
+        .about-m-pills-mobile .about-m-pill svg { width: 11px !important; height: 11px !important; }
+      }
+      @media (max-width: 767px) {
+        .about-m-right-desktop { display: none !important; }
+        .about-m-right-mobile {
+          display: flex !important;
+          flex-direction: column !important;
+          padding: 20px 16px !important;
+          gap: 12px !important;
+        }
+        .about-m-right-mobile .about-m-bio {
+          margin: 0 !important;
+          max-width: 100% !important;
+        }
+        .about-m-right-mobile .about-m-cta { margin-right: 0 !important; }
+        .about-m-right-mobile .about-m-cta-wrap { justify-content: flex-start !important; margin-right: 0 !important; margin-left: 16px !important; }
+      }
+      .about-m-bio {
+        font-size: 0.72rem; line-height: 1.75;
+        color: #fff; margin: 2px 0 2px; margin-right: 52px; max-width: 520px;
+        background: rgba(62, 62, 62, 0.88);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 12px;
+        padding: 18px 22px;
+        font-weight: 500;
+      }
+      .about-m-cta {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 0.9rem; font-weight: 700;
+        padding: 13px 30px; border-radius: 10px;
+        background: rgba(62, 62, 62, 0.88); color: #fff;
+        border: 1px solid rgba(255,255,255,0.25);
+        text-decoration: none; width: fit-content;
+        margin-right: 52px;
+        transition: background 0.2s;
+      }
+      .about-m-cta:hover { background: rgba(62, 62, 62, 1); }
+      .about-m-cta-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-right: 10px; max-width: 520px; justify-content: flex-end; }
+      .about-m-cta { margin-right: 0 !important; }
+      .about-m-wa {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 0.9rem; font-weight: 700;
+        padding: 13px 22px; border-radius: 10px;
+        background: linear-gradient(135deg, #b0b4bb 0%, #7e828b 40%, #4a4e56 100%);
+        color: #fff;
+        border: none;
+        text-decoration: none; width: fit-content;
+        transition: background 0.2s;
+      }
+      .about-m-wa:hover { background: linear-gradient(135deg, #9a9ea6 0%, #6a6e76 40%, #3a3e46 100%); }
+      .about-m-wa svg { flex-shrink: 0; }
+      @media (max-width: 900px) {
+        .about-m-cta-wrap { margin-right: 0 !important; }
+      }
+      @media (min-width: 768px) and (max-width: 900px) {
+        .about-m-cols {
+          grid-template-columns: 1fr 260px !important;
+        }
+        .about-m-photo {
+          overflow: hidden !important;
+          align-self: stretch !important;
+          padding: 0 !important;
+          max-width: none !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          margin-top: 0 !important;
+          border-radius: 0 !important;
+        }
+        .about-m-photo img {
+          transform: none !important;
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: top center !important;
+          display: block !important;
+        }
+        .about-m-pills {
+          display: none !important;
+        }
+      }
+      @media (max-width: 900px) {
+        .about-m-bottom { grid-template-columns: 1fr; margin-right: 0; margin-left: 0; }
+        .about-m-photo { overflow: hidden !important; min-height: 300px; max-height: 340px; position: relative; }
+        .about-m-photo img { height: 340px; width: auto; max-width: none; object-fit: cover; object-position: top center; display: block; transform: none; }
+        .about-m-pills {
+          display: flex;
+          position: absolute;
+          right: 10px;
+          top: 10%;
+          flex-direction: column;
+          gap: 8px;
+          padding: 0;
+          background: transparent;
+          z-index: 10;
+          width: auto;
+        }
+        .about-m-pill {
+          font-size: 9px;
+          padding: 6px 9px;
+          white-space: nowrap;
+          flex: unset;
+          gap: 5px;
+          width: 160px;
+          justify-content: flex-end;
+        }
+        .about-m-pill svg { width: 11px; height: 11px; }
+        .about-m-right { padding: 28px 24px; }
+        .about-m-bio { margin: 0 0 12px; margin-right: 0; }
+        .about-m-cta { margin-right: 0; }
+        .about-m-stats { flex-wrap: wrap; }
+      }
+      @media (max-width: 600px) {
+        .about-m-cols {
+          display: flex !important;
+          flex-direction: column !important;
+          min-height: unset !important;
+        }
+        .about-m-photo {
+          width: 65% !important;
+          max-width: 65% !important;
+          height: auto !important;
+          min-height: unset !important;
+          max-height: unset !important;
+          overflow: visible !important;
+          position: relative !important;
+          align-self: flex-start !important;
+          margin-right: 16px !important;
+          margin-left: auto !important;
+        }
+        .about-m-photo img {
+          width: 100% !important;
+          height: auto !important;
+          object-fit: contain !important;
+          transform: none !important;
+          display: block !important;
+        }
+        .about-m-right {
+          padding: 20px 16px !important;
+          width: 100% !important;
+        }
+        .about-m-bio {
+          max-width: 100% !important;
+          margin-right: 0 !important;
+          margin-left: 0 !important;
+          margin-top: 0 !important;
+          font-size: 0.78rem !important;
+        }
+        .about-m-cta { margin-right: 0 !important; }
+        .about-m-pills {
+          position: absolute !important;
+          left: 0 !important;
+          right: auto !important;
+          top: 20px !important;
+          transform: translateX(-70%) !important;
+          flex-direction: column !important;
+          gap: 6px !important;
+          width: auto !important;
+        }
+        .about-m-pill {
+          font-size: 8px !important;
+          padding: 5px 8px !important;
+          white-space: nowrap !important;
+          width: auto !important;
+          justify-content: flex-end !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .about-m-name { font-size: 1.5rem; }
+        .about-m-cols {
+          display: flex !important;
+          flex-direction: column !important;
+          min-height: unset !important;
+        }
+        .about-m-photo {
+          width: 60% !important;
+          max-width: 60% !important;
+          height: auto !important;
+          min-height: unset !important;
+          max-height: unset !important;
+          overflow: visible !important;
+          position: relative !important;
+          order: 1 !important;
+          margin: 0 20px 0 auto !important;
+        }
+        .about-m-photo img {
+          width: 100% !important;
+          height: auto !important;
+          object-fit: unset !important;
+          transform: none !important;
+          display: block !important;
+        }
+        .about-m-right {
+          order: 2 !important;
+        }
+        .about-m-pills {
+          display: none !important;
+        }
+        .about-m-pill {
+          font-size: 8px !important;
+          padding: 5px 8px !important;
+          white-space: nowrap !important;
+          width: auto !important;
+          justify-content: flex-end !important;
+        }
+        .about-m-pill svg { width: 10px !important; height: 10px !important; }
+        .about-m-right { padding: 20px 16px !important; }
+        .about-m-bio { margin: 0 0 16px !important; margin-right: 0 !important; }
+      }
+      @media (max-width: 400px) {
+        .about-m-name { font-size: 1.3rem; }
+      }
+      @media (max-width: 375px) {
+        .about-m-cta-wrap { flex-direction: row !important; flex-wrap: nowrap !important; gap: 8px !important; justify-content: center !important; align-items: stretch !important; }
+        .about-m-cta { flex: 1 !important; text-align: center !important; font-size: 0.7rem !important; padding: 9px 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+        .about-m-pills-mobile { display: none !important; }
+      }
+      @media (min-width: 480px) and (max-width: 767px) {
+        .about-m-bio { font-size: 0.6rem !important; line-height: 1.5 !important; padding: 10px 14px !important; }
+        .about-m-cta { font-size: 0.75rem !important; padding: 10px 16px !important; }
+        .about-m-name { font-size: 1.4rem !important; }
+      }
+      @media (min-width: 1600px) {
+        .about-m-cols { grid-template-columns: 1fr 520px !important; }
+        .about-m-pills { transform: translateX(-60%) !important; gap: 18px !important; }
+        .about-m-pill { font-size: 15px !important; padding: 14px 22px !important; }
+        .about-m-bio { font-size: 0.95rem !important; }
+        .about-m-right { padding: 40px 52px !important; }
+        .about-m-name { font-size: 3rem !important; }
+      }
+      @media (min-width: 1920px) {
+        .about-m-cols { grid-template-columns: 1fr 640px !important; }
+        .about-m-pills { transform: translateX(-50%) !important; gap: 20px !important; }
+        .about-m-pill { font-size: 16px !important; padding: 16px 24px !important; }
+        .about-m-bio { font-size: 1.5rem !important; max-width: 600px !important; margin: 0 !important; }
+        .about-m-right { padding: 320px 160px 52px 40px !important; justify-content: flex-start !important; gap: 16px !important; }
+        .about-m-name { font-size: 3.5rem !important; }
+      }
+    </style>
+    <div class="container">
+      <div class="about-m">
+
+        <div class="about-m-top">
+          <p class="about-m-eyebrow">عن المركز</p>
+          <h2 class="about-m-name">د. محمد العالم</h2>
+          <p class="about-m-role">أخصائي طب الأسنان التجميلي والمؤسس</p>
+        </div>
+
+        <div class="about-m-bottom">
+          <div class="about-m-cols">
+
+          <div class="about-m-photo">
+            <img src="assets/img/6.png" alt="د. محمد العالم">
+            <div class="about-m-pills">
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4 6 7c0 2 .5 3.5 1 5l1 7c.2 1 1 1.5 2 1.5s1.8-.5 2-1.5l1-7c.5-1.5 1-3 1-5 0-3-3-5-6-5z"/></svg>
+                طب الأسنان التجميلي
+              </div>
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                معتمد من جهار
+              </div>
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                خبرة أكثر من ١٠ سنوات
+              </div>
+            </div>
+          </div>
+
+          <div class="about-m-right about-m-right-desktop">
+            <p class="about-m-bio about-m-bio-1">
+              أخصائي في طب الأسنان التجميلي بخبرة تزيد عن ١٠ سنوات في مجالات التجميل والتعويضات والعلاج بالليزر — ومؤسس أول وحيد مركز أسنان في مصر حاصل على اعتماد جهار.
+            </p>
+            <p class="about-m-bio about-m-bio-2">
+              د. العالم ليس مجرد طبيب، بل هو فنان يصنع ابتسامات تغير الحياة. مهمته: تجربة خالية من الألم وابتسامة تستحق أن تُتذكر.
+            </p>
+            <div class="about-m-cta-wrap">
+              <a href="tel:15180" class="about-m-cta booking-trigger about-m-cta-desktop">
+                احجز موعد
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://wa.me/201226730240" class="about-m-wa" target="_blank" rel="noopener" aria-label="واتساب">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.83.738 5.484 2.027 7.793L0 32l8.418-2.004A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.77-1.852l-.485-.29-5.002 1.19 1.255-4.875-.316-.5A13.253 13.253 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.98c-.398-.2-2.355-1.163-2.72-1.295-.366-.133-.632-.2-.898.2-.266.398-1.031 1.295-1.264 1.561-.233.267-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.233-.398-.025-.613.175-.812.18-.178.398-.465.598-.698.2-.233.266-.398.398-.664.133-.267.067-.5-.033-.698-.1-.2-.898-2.163-1.23-2.961-.325-.778-.655-.673-.898-.685l-.765-.013c-.266 0-.698.1-1.064.5-.366.398-1.397 1.364-1.397 3.327 0 1.963 1.43 3.861 1.63 4.127.2.267 2.816 4.298 6.823 6.026.954.411 1.698.657 2.279.842.957.304 1.829.261 2.518.158.768-.114 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/></svg>
+                واتساب
+              </a>
+            </div>
+          </div>
+
+          </div><!-- end about-m-cols -->
+
+          <!-- Mobile-only: bio below photo -->
+          <div class="about-m-right about-m-right-mobile">
+            <div class="about-m-pills-mobile">
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4 6 7c0 2 .5 3.5 1 5l1 7c.2 1 1 1.5 2 1.5s1.8-.5 2-1.5l1-7c.5-1.5 1-3 1-5 0-3-3-5-6-5z"/></svg>
+                طب الأسنان التجميلي
+              </div>
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                معتمد من جهار
+              </div>
+              <div class="about-m-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                خبرة أكثر من ١٠ سنوات
+              </div>
+            </div>
+            <p class="about-m-bio about-m-bio-1">
+              أخصائي في طب الأسنان التجميلي بخبرة تزيد عن ١٠ سنوات في مجالات التجميل والتعويضات والعلاج بالليزر — ومؤسس أول وحيد مركز أسنان في مصر حاصل على اعتماد جهار.
+            </p>
+            <p class="about-m-bio about-m-bio-2">
+              د. العالم ليس مجرد طبيب، بل هو فنان يصنع ابتسامات تغير الحياة. مهمته: تجربة خالية من الألم وابتسامة تستحق أن تُتذكر.
+            </p>
+            <div class="about-m-cta-wrap">
+              <a href="tel:15180" class="about-m-cta booking-trigger about-m-cta-mobile">
+                احجز موعد
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://wa.me/201226730240" class="about-m-wa" target="_blank" rel="noopener" aria-label="واتساب">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 32 32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.83.738 5.484 2.027 7.793L0 32l8.418-2.004A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.77-1.852l-.485-.29-5.002 1.19 1.255-4.875-.316-.5A13.253 13.253 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.98c-.398-.2-2.355-1.163-2.72-1.295-.366-.133-.632-.2-.898.2-.266.398-1.031 1.295-1.264 1.561-.233.267-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.233-.398-.025-.613.175-.812.18-.178.398-.465.598-.698.2-.233.266-.398.398-.664.133-.267.067-.5-.033-.698-.1-.2-.898-2.163-1.23-2.961-.325-.778-.655-.673-.898-.685l-.765-.013c-.266 0-.698.1-1.064.5-.366.398-1.397 1.364-1.397 3.327 0 1.963 1.43 3.861 1.63 4.127.2.267 2.816 4.298 6.823 6.026.954.411 1.698.657 2.279.842.957.304 1.829.261 2.518.158.768-.114 2.355-.963 2.688-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.266-.764-.465z"/></svg>
+                واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var pillsWrap = document.querySelector('.about-m-pills');
+    if (!pillsWrap) return;
+    var pills = pillsWrap.querySelectorAll('.about-m-pill');
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        pills.forEach(function (pill, i) {
+          setTimeout(function () { pill.classList.add('pill-visible'); }, i * 200);
+        });
+        io.unobserve(pillsWrap);
+      }
+    }, { threshold: 0.3 });
+    io.observe(pillsWrap);
+  })();
+  </script>
+
+  <!-- SERVICES SECTION -->
+  <style>
+    .svc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 28px;
+      row-gap: 4rem;
+      padding-top: 50px;
+      padding-bottom: 60px;
+      align-items: start;
+    }
+
+    .service-card {
+      background: linear-gradient(145deg, #d8d2c2 0%, #c4876a 38%, #8a5236 100%);
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(177,116,87,0.45), 0 2px 8px rgba(177,116,87,0.25);
+      padding: 0 22px 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:nth-child(even) {
+      margin-top: 44px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(177,116,87,0.55), 0 4px 12px rgba(177,116,87,0.30);
+    }
+
+    .svc-card-icon-wrap {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -42px;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+
+    .svc-card-icon-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .svc-card-title {
+      font-family: 'Bukra', 'Bahij', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .svc-card-desc {
+      font-size: 13.5px;
+      font-style: normal;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.85;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .svc-card-more {
+      font-family: 'Bukra', 'Bahij', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(255,255,255,0.7);
+      padding-bottom: 3px;
+      transition: border-color 0.25s, opacity 0.25s;
+    }
+
+    .svc-card-more:hover {
+      opacity: 0.75;
+      border-color: #fff;
+    }
+
+    /* Slider structure */
+    .svc-cards-wrapper {
+      padding-top: 52px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Horizontal clip only — separate from the icon overflow area */
+    .svc-slider-clip {
+      overflow: hidden;
+      direction: ltr;
+    }
+
+    .svc-slider-track {
+      display: flex;
+      direction: ltr;
+      width: 200%;
+      transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .svc-slide-group {
+      width: 50%;
+      direction: rtl;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 28px;
+      padding-top: 52px;
+      padding-bottom: 60px;
+      align-items: start;
+    }
+
+    /* Even cards in each group shift down */
+    .svc-slide-group .service-card:nth-child(even) {
+      margin-top: 44px;
+    }
+
+    /* Dots */
+    .svc-slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .svc-slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(177,116,87,0.3);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+
+    .svc-slider-dot.active {
+      background: var(--mint);
+      transform: scale(1.3);
+    }
+
+    /* ── موبايل: 4 كروت في شريحة (2×2) ── */
+    @media (max-width: 767px) {
+      .svc-slider-track { width: 200%; }
+      .svc-slide-group  {
+        width: 50%;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 12px;
+        row-gap: 60px;
+        padding-top: 40px;
+        padding-bottom: 44px;
+      }
+      .svc-slide-group .service-card:nth-child(even) { margin-top: 28px; }
+      .svc-card-icon-wrap { width: 60px; height: 60px; margin-top: -30px; margin-bottom: 12px; }
+      .svc-card-title  { font-size: 11px; margin-bottom: 7px; }
+      .svc-card-desc   { font-size: 11px; line-height: 1.6; margin-bottom: 12px; }
+      .svc-card-more   { font-size: 11px; letter-spacing: 1px; }
+      .service-card    { padding: 0 12px 18px; border-radius: 14px; }
+    }
+  </style>
+
+
+  <!-- ══════════════════════════════════════════════
+       BEFORE / AFTER RESULTS SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="ba-section" id="results">
+    <div class="container">
+      <div class="ba-header">
+        <div class="ba-eyebrow"><span class="eyebrow-line"></span>نتائج حقيقية</div>
+        <h2 class="ba-title">نتائج تتحدث عن نفسها.</h2>
+        <p class="ba-subtitle">كل ابتسامة تحكي قصة — شاهد التحولات الحقيقية التي صنعناها، في مركز العالم.</p>
+      </div>
+    </div><!-- /container -->
+
+    <div class="ba-carousel-wrap">
+      <div class="ba-track">
+          <!-- Case 1 -->
+          <div class="ba-card" data-idx="0">
+            <div class="ba-img-wrap">
+              <img src="assets/img/before%26after/1.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 2 -->
+          <div class="ba-card" data-idx="1">
+            <div class="ba-img-wrap">
+              <img src="assets/img/before%26after/2.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 3 -->
+          <div class="ba-card" data-idx="2">
+            <div class="ba-img-wrap">
+              <img src="assets/img/before%26after/3.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 4 -->
+          <div class="ba-card" data-idx="3">
+            <div class="ba-img-wrap">
+              <img src="assets/img/before%26after/4.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 5 -->
+          <div class="ba-card" data-idx="4">
+            <div class="ba-img-wrap">
+              <img src="assets/img/Jan%20Case.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 6 -->
+          <div class="ba-card" data-idx="5">
+            <div class="ba-img-wrap">
+              <img src="assets/img/case%202.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 7 -->
+          <div class="ba-card" data-idx="6">
+            <div class="ba-img-wrap">
+              <img src="assets/img/case%203.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+          <!-- Case 8 -->
+          <div class="ba-card" data-idx="7">
+            <div class="ba-img-wrap">
+              <img src="assets/img/case%204.png" alt="قبل وبعد" loading="lazy">
+            </div>
+          </div>
+      </div><!-- /ba-track -->
+
+      <div class="ba-dots">
+        <button class="ba-dot" data-idx="0" aria-label="الحالة 1"></button>
+        <button class="ba-dot" data-idx="1" aria-label="الحالة 2"></button>
+        <button class="ba-dot" data-idx="2" aria-label="الحالة 3"></button>
+        <button class="ba-dot" data-idx="3" aria-label="الحالة 4"></button>
+        <button class="ba-dot" data-idx="4" aria-label="الحالة 5"></button>
+        <button class="ba-dot" data-idx="5" aria-label="الحالة 6"></button>
+        <button class="ba-dot" data-idx="6" aria-label="الحالة 7"></button>
+        <button class="ba-dot" data-idx="7" aria-label="الحالة 8"></button>
+      </div>
+    </div><!-- /ba-carousel-wrap -->
+  </section>
+
+  <!-- BA Carousel Script -->
+  <script>
+  (function () {
+    var wrap  = document.querySelector('.ba-carousel-wrap');
+    if (!wrap) return;
+    var track   = wrap.querySelector('.ba-track');
+    var cards   = Array.from(track.querySelectorAll('.ba-card'));
+    var dots    = Array.from(wrap.querySelectorAll('.ba-dot'));
+    var prevBtn = wrap.querySelector('.ba-nav-prev');
+    var nextBtn = wrap.querySelector('.ba-nav-next');
+    var total   = cards.length;
+    var active  = 0;
+
+    function update() {
+      cards.forEach(function (card, i) {
+        card.classList.remove('is-active', 'is-prev', 'is-next', 'is-prev2', 'is-next2');
+        var offset = ((i - active) % total + total) % total;
+        if (offset === 0)              card.classList.add('is-active');
+        else if (offset === 1)         card.classList.add('is-next');
+        else if (offset === total - 1) card.classList.add('is-prev');
+        else if (offset === 2)         card.classList.add('is-next2');
+        else if (offset === total - 2) card.classList.add('is-prev2');
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === active);
+      });
+    }
+
+    function go(dir) {
+      active = ((active + dir) % total + total) % total;
+      update();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(+1); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        active = parseInt(dot.dataset.idx, 10);
+        update();
+      });
+    });
+
+    track.addEventListener('click', function (e) {
+      var card = e.target.closest('.ba-card');
+      if (!card) return;
+      if (card.classList.contains('is-prev'))  go(-1);
+      if (card.classList.contains('is-next'))  go(+1);
+      if (card.classList.contains('is-prev2')) { go(-1); go(-1); }
+      if (card.classList.contains('is-next2')) { go(+1); go(+1); }
+    });
+
+    var swipeX = 0;
+    track.addEventListener('touchstart', function (e) { swipeX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      var diff = swipeX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) go(diff > 0 ? 1 : -1);
+    }, { passive: true });
+
+    update();
+
+    /* ── Auto-play: right to left (-1) every 2.5s ── */
+    var autoTimer = null;
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(function () { go(-1); }, 2500);
+    }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    startAuto();
+    wrap.addEventListener('mouseenter',  stopAuto);
+    wrap.addEventListener('mouseleave',  startAuto);
+    track.addEventListener('touchstart', stopAuto,  { passive: true });
+    track.addEventListener('touchend',   function () { setTimeout(startAuto, 1000); }, { passive: true });
+
+  })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════
+       VIDEO TESTIMONIALS SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="vid-tst-section section" id="video-testimonials">
+    <style>
+      .vid-tst-section { background: transparent; padding: 80px 0; width: 100%; margin: 0 auto 4rem; border-radius: 25px; border: 25px solid #ffffffbf; box-shadow: 0 30px 60px rgba(0,0,0,0.35), 0 -10px 30px rgba(0,0,0,0.15); position: relative; }
+      .vid-tst-section .container { max-width: 100%; }
+      .vid-tst-layout { display: flex; flex-direction: column; gap: 40px; }
+      .vid-tst-text { padding: 0 36px 0 30px; }
+      .vid-tst-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: rgba(255,255,255,0.75); }
+      .vid-tst-eyebrow {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+        color: rgba(255,255,255,0.75); margin-bottom: 12px;
+      }
+      .vid-tst-title { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.2; margin: 0 0 10px; }
+      .vid-tst-subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin: 0 0 10px; line-height: 1.6; }
+      .vid-tst-outer {
+        overflow: hidden; border-radius: 22px; direction: ltr;
+        background: rgb(80, 84, 90);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.08);
+        padding: 16px 0;
+      }
+      .vid-tst-grid {
+        display: flex; flex-direction: row; gap: 10px; height: 580px;
+        align-items: stretch; width: max-content;
+        padding: 0 20px; direction: ltr;
+      }
+      .vid-card {
+        position: relative; overflow: hidden; flex: 0 0 140px;
+        border-radius: 18px; cursor: pointer; background: #111;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease, box-shadow 0.4s;
+      }
+      .vid-tst-outer:hover .vid-card { opacity: 0.55; transform: scale(0.97); }
+      .vid-tst-outer:hover .vid-card:hover { opacity: 1; transform: scale(1.04); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+      .vid-card .vid-video { background: #111; }
+      .vid-card .vid-video {
+        position: absolute; top: -12%; left: 0; z-index: 1;
+        width: 100%; height: 120%;
+        object-fit: cover; object-position: center 15%; display: block;
+        transition: opacity 0.1s ease;
+      }
+      .vid-card.vid-loading .vid-video { opacity: 0; }
+      .vid-thumb {
+        width: 100%; height: 120%;
+        object-fit: cover; object-position: center 15%;
+        position: absolute; top: -12%; left: 0; z-index: 2;
+        display: block; pointer-events: none;
+      }
+      section#video-testimonials.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .vid-overlay {
+        position: absolute; inset: 0; z-index: 3; padding: 24px;
+        display: flex; flex-direction: column; justify-content: flex-end;
+        background: linear-gradient(to top, rgba(0,20,60,0.6) 0, rgba(0,0,0,0.1) 60%, transparent 100%);
+        transition: background 0.4s;
+      }
+      .vid-card:hover .vid-overlay { background: linear-gradient(to top, rgba(0,20,60,0.4) 0, transparent 55%); }
+      .vid-play-icon {
+        position: absolute; top: 50%; left: 50%;
+        width: 44px; height: 44px;
+        background: rgba(0,0,0,0.35); border: 2.5px solid rgba(255,255,255,0.9);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 0.95rem; z-index: 4;
+        transform: translate(-50%,-50%) scale(0.85); opacity: 0.7;
+        transition: opacity 0.35s, transform 0.35s;
+      }
+      .vid-card:hover .vid-play-icon { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+      .vid-play-icon .icon-pause { display: none; }
+
+      @media (min-width: 961px) and (max-width: 1280px) {
+        .vid-tst-grid { height: 420px; gap: 8px; }
+        .vid-card { flex: 0 0 100px; border-radius: 14px; }
+      }
+      @media (min-width: 768px) and (max-width: 960px) {
+        .vid-tst-section { padding: 50px 0; margin: 0 12px 3rem; }
+        .vid-tst-title { font-size: 1.3rem; }
+        .vid-tst-subtitle { font-size: 0.8rem; }
+        .vid-tst-grid { height: 380px; gap: 8px; }
+        .vid-card { flex: 0 0 120px; border-radius: 14px; }
+      }
+      @media (max-width: 767px) {
+        .vid-tst-section { padding: 50px 0; margin: 0 12px 3rem; }
+        .vid-tst-title { font-size: 1.2rem; }
+        .vid-tst-text { padding: 0 16px; }
+        .vid-tst-outer { overflow: hidden !important; }
+        .vid-tst-grid {
+          height: 320px;
+          width: max-content !important;
+          padding: 10px 16px;
+          gap: 8px;
+        }
+        .vid-tst-grid::-webkit-scrollbar { display: none; }
+        .vid-card {
+          flex: 0 0 110px !important;
+          transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
+        }
+        .vid-card.is-active {
+          flex: 0 0 110px !important;
+          transform: none;
+          box-shadow: 0 18px 48px rgba(126,130,139,0.38);
+        }
+      }
+      @media (max-width: 480px) {
+        .vid-tst-title { font-size: 1rem; white-space: nowrap; }
+        .vid-tst-grid { height: 280px !important; }
+        .vid-card { flex: 0 0 100px !important; }
+        .vid-card.is-active { flex: 0 0 100px !important; }
+      }
+      @media (max-width: 400px) {
+        .vid-tst-title { font-size: 0.85rem; white-space: nowrap; }
+        .vid-tst-subtitle { font-size: 0.82rem; }
+        .vid-tst-text { padding: 0 16px; }
+        .vid-card { flex: 0 0 90px !important; }
+        .vid-card.is-active { flex: 0 0 90px !important; }
+      }
+      @media (max-width: 375px) {
+        .vid-card { flex: 0 0 85px !important; }
+        .vid-card.is-active { flex: 0 0 85px !important; }
+      }
+    </style>
+    <div class="container">
+      <div class="vid-tst-layout">
+        <div class="vid-tst-text">
+          <div class="vid-tst-eyebrow">قصص المرضى</div>
+          <h2 class="vid-tst-title">حالات حقيقية.. تغيير جذري.</h2>
+          <p class="vid-tst-subtitle">تجربة حالات مركز العالم.</p>
+        </div>
+        <div class="vid-tst-outer" id="vidTstOuter">
+        <div class="vid-tst-grid" id="vidTstGrid">
+          <div class="vid-card" data-src="assets/img/untitled%20folder/1.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/1.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/2.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/2.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/3.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/3.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/4.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/4.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/5.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/5.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/6.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/6.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/7.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/7.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+          <div class="vid-card" data-src="assets/img/untitled%20folder/%D8%B1%D8%A3%D9%8A%20%D8%AD%D8%A7%D9%84%D8%A9%20%D8%A8%D8%B9%D8%AF%20%D8%B9%D9%84%D8%A7%D8%AC%20%D9%88%D8%AA%D8%AC%D9%85%D9%8A%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86%20%D8%A8%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D9%81%D9%8A%D9%86%D9%8A%D8%B1%D8%B2%20%D8%AB%D9%84%D8%A7%D8%AB%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D8%A8%D8%B9%D8%A7%D8%AF.%D8%AA%D8%AC%D9%85%D9%8A%D9%84%20%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86%20%D8%A8%D9%8A%D8%AA%D9%85%20%D8%A8%D8%A5%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85%20%D8%A3%D8%AD.mp4">
+            <img class="vid-thumb" src="assets/img/vid-thumbs/8.jpg" alt="" loading="eager" decoding="sync">
+            <div class="vid-overlay"><div class="vid-play-icon"><i class="fa-solid fa-play icon-play"></i></div></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- Video Modal -->
+    <div id="vidModal" style="display:none;position:absolute;inset:0;z-index:9999;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column;border-radius:28px;">
+      <button id="vidModalClose" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.3rem;width:38px;height:38px;border-radius:50%;cursor:pointer;z-index:10000;">✕</button>
+      <video id="vidModalVideo" playsinline controls style="max-height:80%;max-width:88%;border-radius:16px;object-fit:contain;"></video>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var outer = document.getElementById('vidTstOuter');
+    var grid  = document.getElementById('vidTstGrid');
+    if (!grid || !outer) return;
+
+
+    /* Modal */
+    var modal      = document.getElementById('vidModal');
+    var modalVideo = document.getElementById('vidModalVideo');
+    var modalClose = document.getElementById('vidModalClose');
+    function openModal(src) {
+      modalVideo.src = src;
+      modal.style.display = 'flex';
+      modalVideo.play();
+    }
+    if (modalClose) modalClose.addEventListener('click', function() {
+      modal.style.display = 'none';
+      modalVideo.pause();
+      modalVideo.src = '';
+    });
+
+    grid.addEventListener('click', function(e) {
+      var card = e.target.closest('.vid-card');
+      if (!card) return;
+      var src = card.getAttribute('data-src') || '';
+      if (src) openModal(src);
+    });
+
+    /* Card width */
+    var cardW = window.innerWidth > 1024 ? 175 : (window.innerWidth > 767 ? 120 : 100);
+    Array.from(grid.querySelectorAll('.vid-card')).forEach(function(c) {
+      c.style.setProperty('flex', '0 0 ' + cardW + 'px', 'important');
+      c.style.setProperty('width', cardW + 'px', 'important');
+    });
+
+    /* Marquee */
+    var origCards = Array.from(grid.querySelectorAll('.vid-card'));
+    for (var ci = 0; ci < 3; ci++) {
+      origCards.forEach(function(c) {
+        var cl = c.cloneNode(true);
+        cl.style.pointerEvents = 'none';
+        cl.querySelectorAll('video').forEach(function(v) { v.currentTime = 0.01; });
+        grid.appendChild(cl);
+      });
+    }
+
+    var SPEED = 0.6, paused = false, xPos = 0, totalW = 0;
+    function calcTotal() {
+      var cards = grid.querySelectorAll('.vid-card');
+      if (cards.length >= origCards.length + 1)
+        totalW = cards[origCards.length].offsetLeft - cards[0].offsetLeft;
+    }
+    setTimeout(calcTotal, 600);
+
+    function tick() {
+      if (!paused && totalW > 0) {
+        xPos += SPEED;
+        if (xPos >= totalW) xPos -= totalW;
+        grid.style.transform = 'translateX(-' + xPos + 'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    outer.addEventListener('mouseenter', function() { paused = true; });
+    outer.addEventListener('mouseleave', function() { paused = false; });
+  })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════
+       TESTIMONIALS SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="tst-section" id="testimonials">
+    <style>
+      .tst-section {
+        background: transparent;
+        padding: 80px 0 100px; width: 100%; margin: 0 auto 4rem; border-radius: 25px;
+        border: 25px solid #ffffffbf;
+        position: relative; overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.35), 0 -10px 30px rgba(0,0,0,0.15);
+      }
+      .tst-track-wrap {
+        background: rgb(80, 84, 90);
+        border-radius: 22px; margin: 0 3%;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.35);
+      }
+      .tst-section .container { max-width: 1400px; }
+      .tst-header { margin-bottom: 60px; padding: 0 36px 0 30px; }
+      .tst-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 12px; }
+      .tst-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: rgba(255,255,255,0.75); }
+      .tst-title { font-size: 2.4rem; font-weight: 800; color: #fff; margin: 0 0 10px; line-height: 1.2; }
+      .tst-subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.7); margin: 0; max-width: 480px; line-height: 1.7; }
+      .tst-track-wrap { overflow: hidden; padding: 50px 0 60px; direction: ltr; }
+      .tst-track {
+        display: flex; gap: 60px;
+        width: max-content;
+        direction: ltr;
+        will-change: transform;
+      }
+      .tst-card {
+        width: 300px; min-width: 300px; min-height: 180px; flex-shrink: 0;
+        border: none; border-radius: 18px; padding: 24px 22px 20px;
+        position: relative; background: rgba(210,214,220,0.65);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12); text-align: center;
+      }
+      .tst-card::before {
+        content: ''; position: absolute; top: 0; right: 0; left: 0;
+        height: 3px; border-radius: 18px 18px 0 0;
+        background: linear-gradient(90deg, rgba(62,62,62,0.4) 0%, rgba(168,171,179,0.9) 50%, rgba(62,62,62,0.4) 100%);
+        z-index: 1;
+      }
+      .tst-card::after { content: none; }
+      .tst-corner-tl { position: absolute; top: -2px; right: -2px; width: calc(100% - 30px); height: calc(100% - 30px); border-top: 4px solid rgba(255,255,255,0.7); border-right: 4px solid rgba(255,255,255,0.7); border-radius: 0 24px 0 0; pointer-events: none; }
+      .tst-corner-br { position: absolute; bottom: -2px; left: -2px; width: calc(100% - 30px); height: calc(100% - 30px); border-bottom: 4px solid rgba(126,130,139,0.5); border-left: 4px solid rgba(126,130,139,0.5); border-radius: 0 0 0 24px; pointer-events: none; }
+      .tst-card-text { color: rgba(50,55,65,0.85); font-size: 0.68rem; line-height: 1.65; margin: 0 0 14px; }
+      .tst-stars { color: #f5c518; font-size: 15px; margin-bottom: 20px; letter-spacing: 3px; }
+      .tst-client { display: flex; align-items: center; justify-content: center; gap: 14px; }
+      .tst-avatar { width: 46px; height: 46px; border-radius: 50%; background: rgba(126,130,139,0.15); border: 1.5px solid rgba(126,130,139,0.3); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: #3a3d42; flex-shrink: 0; overflow: hidden; }
+      .tst-avatar img { width: 46px; height: 46px; object-fit: cover; border-radius: 50%; display: block; }
+      .tst-client-name { font-size: 0.62rem; font-weight: 700; color: #3a3d42; margin: 0 0 2px; text-align: right; white-space: nowrap; }
+      .tst-client-since { font-size: 11px; color: rgba(126,130,139,0.7); display: block; text-align: right; }
+      .tst-dots { display: flex; justify-content: center; gap: 8px; margin-top: 36px; }
+      .tst-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.45); border: none; cursor: pointer; padding: 0; transition: background 0.25s, width 0.3s, border-radius 0.3s; }
+      .tst-dot.active { background: #fff; width: 28px; border-radius: 4px; }
+
+      @media (min-width: 768px) and (max-width: 960px) {
+        .tst-title { font-size: 1.4rem !important; }
+        .tst-subtitle { font-size: 0.8rem !important; }
+      }
+      @media (max-width: 767px) {
+        .tst-section { margin: 0 4px 4rem !important; }
+        .tst-header { margin-bottom: 12px; padding: 0 12px; }
+        .tst-title { font-size: 0.85rem; }
+        .tst-subtitle { font-size: 0.65rem; }
+        .tst-track-wrap { padding: 10px 10px 20px; }
+        .tst-track { gap: 10px; }
+        .tst-card {
+          width: calc(100vw - 80px);
+          min-width: calc(100vw - 80px);
+          min-height: unset;
+          padding: 14px 12px 12px;
+          font-size: 0.65rem;
+        }
+        .tst-card-text { font-size: 0.65rem; line-height: 1.6; }
+        .tst-card::before { display: none; }
+        .tst-card::after  { display: none; }
+      }
+      @media (max-width: 480px) {
+        .tst-card {
+          width: calc(100vw - 120px) !important;
+          min-width: calc(100vw - 120px) !important;
+          padding: 12px 10px !important;
+        }
+        .tst-card-text { font-size: 0.6rem !important; line-height: 1.55; }
+        .tst-client-name { font-size: 0.55rem !important; }
+        .tst-client-since { font-size: 9px !important; }
+        .tst-stars { font-size: 12px !important; margin-bottom: 12px !important; }
+        .tst-avatar { width: 36px !important; height: 36px !important; }
+      }
+      @media (max-width: 400px) {
+        .tst-title { font-size: 0.9rem; }
+        .tst-subtitle { font-size: 0.7rem; }
+        .tst-section { padding: 40px 0 !important; margin: 0 12px 4rem !important; }
+        .tst-card {
+          width: calc(100vw - 100px);
+          min-width: calc(100vw - 100px);
+          min-height: unset;
+          padding: 24px 16px 18px;
+        }
+        .tst-card-text { font-size: 0.7rem; line-height: 1.6; }
+      }
+    </style>
+    <div class="container">
+      <div class="tst-header">
+        <div class="tst-eyebrow">آراء المرضى</div>
+        <h2 class="tst-title">ماذا يقول مرضانا</h2>
+        <p class="tst-subtitle">تجارب حقيقية من مرضى وثقوا بمركز العالم لطب الأسنان</p>
+      </div>
+    </div>
+    <div class="tst-track-wrap" id="tstWrap">
+      <div class="tst-track" id="tstTrack">
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">مركز محترم و ثقه امتياز في التعامل حتي في فترة الضمان هو بالفعل أوضحوا أنه ضمان فعلي مدي الحياه و ليس مجرد تسويق عن تجربه بعد خمس سنين من التركيبات. شكر خاص دكتور محمد العالم الذوق و مصدر الثقه بالمكان وشكرا خاص دكتور دينا للاهتمام.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/mohamed_reda.png" alt="Mohamed Reda"></div>
+            <div><p class="tst-client-name">Mohamed Reda</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">من خلال تجربتى مع دكتور العالم للاسنان بصراحه كانت تجربه رائعه التيم كله مريح ورائع من اول الاستقبال لحد حجرة الكشف. دكاتره مريحين ومتفهمين. المكان مريح ومنظم وفعلا تجربه رائعه دكتور محمد بيفهمك كل حاجه وبتاخد وقتك.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/toona%20hafez.png" alt="Toona Hafez"></div>
+            <div><p class="tst-client-name">Toona Hafez</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">أنا مريض عند د. محمد العالم منذ سنتين، ولا أستطيع أن أوصي بعيادته بما يكفي. الفريق بأكمله دائمًا محترف وودود ويهتم حقًا براحتك وصحة فمك. د. محمد العالم يتمتع بمهارة استثنائية ويأخذ الوقت الكافي لشرح الإجراءات.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/egyption_traveller.png" alt="Egyptian Traveller"></div>
+            <div><p class="tst-client-name">Egyptian Traveller</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">كانت لديّ تجربة رائعة اليوم. الطاقم متعاون ومحترف جدًا، دخلت العيادة في الموعد ولم أنتظر طويلًا. كل شيء كان مثاليًا والعيادة نظيفة للغاية. أنصح بهذا المكان بشدة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/Lucenda%20Lucenda%20Saeed%20Mohmed.png" alt="Lucenda Saeed"></div>
+            <div><p class="tst-client-name">Lucenda Saeed Mohmed</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">د. العالم هو أفضل طبيب. مركزه لطب الأسنان هو الأفضل حقًا في القاهرة. كل ما أحتاجه لأسناني أقوم به عند د. العالم. بدون ألم والنتيجة مثالية. شكرًا دكتور.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/Jihan%20Hevaoui%20.png" alt="Jihan Hevaoui"></div>
+            <div><p class="tst-client-name">Jihan Hevaoui</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">د. محمد من أفضل الأطباء الذين تعاملت معهم — محترم وصادق وطيب القلب، وعمله احترافي حقًا. أنصح به بشدة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">A</div>
+            <div><p class="tst-client-name">Aya Elbasha</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">تجربة ممتازة من البداية للنهاية. الدكتور محمد متميز في عمله ويتعامل مع المرضى باحترام وصبر كبير. العيادة نظيفة ومجهزة بأحدث الأجهزة. سأنصح كل أصدقائي بالتوجه إليه.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">S</div>
+            <div><p class="tst-client-name">Sara Hassan</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">أول مرة أزور عيادة أسنان وأخرج منها مبتسم! الدكتور العالم يجعل التجربة مريحة تمامًا ولا تشعر بأي ألم. الفريق رائع والمكان يوحي بالثقة. شكرًا جزيلًا.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">K</div>
+            <div><p class="tst-client-name">Karim Mansour</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">من أفضل العيادات التي زرتها على الإطلاق. الدكتور محترف جدًا وشرح لي كل خطوة بالتفصيل. النتيجة فاقت توقعاتي والابتسامة أصبحت أجمل. أوصي بشدة بمركز العالم لطب الأسنان.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">N</div>
+            <div><p class="tst-client-name">Nadia Fouad</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">الدكتور محمد العالم طبيب استثنائي بكل المقاييس. كنت خايف جدًا من طبيب الأسنان بس بعد أول زيارة اتغيرت نظرتي خالص. الألم مش موجود والنتيجة احترافية. شكرًا على الاهتمام والدقة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">O</div>
+            <div><p class="tst-client-name">Omar Shalaby</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">ما شاء الله على الخدمة والاحترافية. الاستقبال كان رائع والدكتور شرح كل حاجة بالتفصيل قبل ما يبدأ. حسيت بالأمان من أول لحظة. المكان نظيف ومرتب. تجربة ممتازة بكل معنى الكلمة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">R</div>
+            <div><p class="tst-client-name">Rania Soliman</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">زرت المركز لعمل تركيبات والنتيجة مذهلة. الدكتور محمد العالم دقيق جدًا في شغله ومهتم براحة المريض. الأسعار معقولة مقارنة بجودة الخدمة. أنصح أي حد يدور على طبيب أسنان محترف.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">H</div>
+            <div><p class="tst-client-name">Hany Abdallah</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">تجربتي مع د. العالم كانت رائعة جدًا. الدكتور صبور ومتفهم ويعطيك الوقت الكافي. عملت زراعة أسنان وكانت النتيجة مبهرة. العيادة حديثة ومجهزة بأحدث التقنيات. شكرًا من القلب.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">M</div>
+            <div><p class="tst-client-name">Mona Tarek</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">بجد من أحسن التجارب اللي مررت بيها. الدكتور العالم محترف ومتفاني في شغله. الفريق الطبي متعاون والمكان هادي ومريح. ما تترددش لو محتاج طبيب أسنان ثقة — ده هو الاختيار الصح.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">Y</div>
+            <div><p class="tst-client-name">Youssef Khalil</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">مركز محترم و ثقه امتياز في التعامل حتي في فترة الضمان هو بالفعل أوضحوا أنه ضمان فعلي مدي الحياه و ليس مجرد تسويق عن تجربه بعد خمس سنين من التركيبات. شكر خاص دكتور محمد العالم الذوق و مصدر الثقه بالمكان وشكرا خاص دكتور دينا للاهتمام.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/mohamed_reda.png" alt="Mohamed Reda"></div>
+            <div><p class="tst-client-name">Mohamed Reda</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">من خلال تجربتى مع دكتور العالم للاسنان بصراحه كانت تجربه رائعه التيم كله مريح ورائع من اول الاستقبال لحد حجرة الكشف. دكاتره مريحين ومتفهمين. المكان مريح ومنظم وفعلا تجربه رائعه دكتور محمد بيفهمك كل حاجه وبتاخد وقتك.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/toona%20hafez.png" alt="Toona Hafez"></div>
+            <div><p class="tst-client-name">Toona Hafez</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">أنا مريض عند د. محمد العالم منذ سنتين، ولا أستطيع أن أوصي بعيادته بما يكفي. الفريق بأكمله دائمًا محترف وودود ويهتم حقًا براحتك وصحة فمك. د. محمد العالم يتمتع بمهارة استثنائية ويأخذ الوقت الكافي لشرح الإجراءات.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/egyption_traveller.png" alt="Egyptian Traveller"></div>
+            <div><p class="tst-client-name">Egyptian Traveller</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">كانت لديّ تجربة رائعة اليوم. الطاقم متعاون ومحترف جدًا، دخلت العيادة في الموعد ولم أنتظر طويلًا. كل شيء كان مثاليًا والعيادة نظيفة للغاية. أنصح بهذا المكان بشدة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/Lucenda%20Lucenda%20Saeed%20Mohmed.png" alt="Lucenda Saeed"></div>
+            <div><p class="tst-client-name">Lucenda Saeed Mohmed</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">د. العالم هو أفضل طبيب. مركزه لطب الأسنان هو الأفضل حقًا في القاهرة. كل ما أحتاجه لأسناني أقوم به عند د. العالم. بدون ألم والنتيجة مثالية. شكرًا دكتور.</p>
+          <div class="tst-client">
+            <div class="tst-avatar"><img src="assets/img/Jihan%20Hevaoui%20.png" alt="Jihan Hevaoui"></div>
+            <div><p class="tst-client-name">Jihan Hevaoui</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">د. محمد من أفضل الأطباء الذين تعاملت معهم — محترم وصادق وطيب القلب، وعمله احترافي حقًا. أنصح به بشدة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">A</div>
+            <div><p class="tst-client-name">Aya Elbasha</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">تجربة ممتازة من البداية للنهاية. الدكتور محمد متميز في عمله ويتعامل مع المرضى باحترام وصبر كبير. العيادة نظيفة ومجهزة بأحدث الأجهزة. سأنصح كل أصدقائي بالتوجه إليه.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">S</div>
+            <div><p class="tst-client-name">Sara Hassan</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">أول مرة أزور عيادة أسنان وأخرج منها مبتسم! الدكتور العالم يجعل التجربة مريحة تمامًا ولا تشعر بأي ألم. الفريق رائع والمكان يوحي بالثقة. شكرًا جزيلًا.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">K</div>
+            <div><p class="tst-client-name">Karim Mansour</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">من أفضل العيادات التي زرتها على الإطلاق. الدكتور محترف جدًا وشرح لي كل خطوة بالتفصيل. النتيجة فاقت توقعاتي والابتسامة أصبحت أجمل. أوصي بشدة بمركز العالم لطب الأسنان.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">N</div>
+            <div><p class="tst-client-name">Nadia Fouad</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">الدكتور محمد العالم طبيب استثنائي بكل المقاييس. كنت خايف جدًا من طبيب الأسنان بس بعد أول زيارة اتغيرت نظرتي خالص. الألم مش موجود والنتيجة احترافية. شكرًا على الاهتمام والدقة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">O</div>
+            <div><p class="tst-client-name">Omar Shalaby</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">ما شاء الله على الخدمة والاحترافية. الاستقبال كان رائع والدكتور شرح كل حاجة بالتفصيل قبل ما يبدأ. حسيت بالأمان من أول لحظة. المكان نظيف ومرتب. تجربة ممتازة بكل معنى الكلمة.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">R</div>
+            <div><p class="tst-client-name">Rania Soliman</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">زرت المركز لعمل تركيبات والنتيجة مذهلة. الدكتور محمد العالم دقيق جدًا في شغله ومهتم براحة المريض. الأسعار معقولة مقارنة بجودة الخدمة. أنصح أي حد يدور على طبيب أسنان محترف.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">H</div>
+            <div><p class="tst-client-name">Hany Abdallah</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">تجربتي مع د. العالم كانت رائعة جدًا. الدكتور صبور ومتفهم ويعطيك الوقت الكافي. عملت زراعة أسنان وكانت النتيجة مبهرة. العيادة حديثة ومجهزة بأحدث التقنيات. شكرًا من القلب.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">M</div>
+            <div><p class="tst-client-name">Mona Tarek</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+        <div class="tst-card">
+          <div class="tst-corner-tl"></div><div class="tst-corner-br"></div>
+          <div class="tst-stars">★★★★★</div>
+          <p class="tst-card-text">بجد من أحسن التجارب اللي مررت بيها. الدكتور العالم محترف ومتفاني في شغله. الفريق الطبي متعاون والمكان هادي ومريح. ما تترددش لو محتاج طبيب أسنان ثقة — ده هو الاختيار الصح.</p>
+          <div class="tst-client">
+            <div class="tst-avatar">Y</div>
+            <div><p class="tst-client-name">Youssef Khalil</p><span class="tst-client-since">تقييم جوجل</span></div>
+          </div>
+        </div>
+
+      </div>
+    <div class="tst-dots" id="tstDots"></div>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    var track = document.getElementById('tstTrack');
+    if (!track) return;
+    var origCards = Array.from(track.querySelectorAll('.tst-card'));
+    origCards.forEach(function(c) {
+      var cl = c.cloneNode(true);
+      cl.setAttribute('aria-hidden', 'true');
+      track.appendChild(cl);
+    });
+    var xPos = 0;
+    var SPEED = 1.5;
+    var origWidth = 0;
+    var paused = false;
+    track.addEventListener('mouseenter', function() { paused = true; });
+    track.addEventListener('mouseleave', function() { paused = false; });
+    function tick() {
+      if (origWidth === 0) {
+        origWidth = track.scrollWidth / 2;
+      }
+      if (!paused) {
+        xPos -= SPEED;
+        if (xPos <= -origWidth) xPos = 0;
+        track.style.transform = 'translateX(' + xPos + 'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+  </script>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  var btn     = document.getElementById('hamburgerBtn');
+  var overlay = document.getElementById('mobileNavOverlay');
+  if (!btn || !overlay) return;
+
+  /* Split each nav link into letter spans */
+  overlay.querySelectorAll('.mobile-nav-links a:not(.mobile-lang-btn)').forEach(function(a) {
+    if (a.dataset.split) return;
+    a.dataset.split = '1';
+    var text = a.textContent;
+    a.textContent = '';
+    text.split('').forEach(function(ch) {
+      var s = document.createElement('span');
+      s.textContent = ch === ' ' ? ' ' : ch;
+      s.style.display = 'inline-block';
+      a.appendChild(s);
+    });
+  });
+
+  btn.addEventListener('click', function() {
+    var open = overlay.classList.contains('is-open');
+    if (!open) return;
+    /* Animate letters on open */
+    overlay.querySelectorAll('.mobile-nav-links a').forEach(function(a, i) {
+      var letters = a.querySelectorAll('span');
+      gsap.fromTo(letters,
+        { opacity: 0, y: 20, rotateX: -90 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.4, stagger: 0.04,
+          ease: 'back.out(1.6)', delay: i * 0.1, clearProps: 'all' }
+      );
+    });
+    var langBtn = overlay.querySelector('.mobile-lang-btn');
+    if (langBtn) gsap.fromTo(langBtn,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', delay: 0.45 }
+    );
+  });
+
+  overlay.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      overlay.classList.remove('is-open');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !overlay.contains(e.target)) {
+      overlay.classList.remove('is-open');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+
+
+
+  <!-- ── Section Scroll Reveal Animations ── -->
+
+
+
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+
+          <!-- العمود الأول: عن العيادة -->
+          <div class="footer-col footer-about">
+            <div class="footer-logo">
+              <span class="footer-logo-text">مركز <span>د.العالم</span></span>
+            </div>
+            <p class="footer-desc">في مركز د.العالم لطب الأسنان، نحن أكثر من مجرد فريق — نحن عائلة. أطباؤنا المتخصصون ملتزمون بتقديم أعلى مستوى من الرعاية مع إشعارك بالراحة والاطمئنان.</p>
+            <!-- زرار للـ desktop فقط -->
+            <div class="footer-cta-desktop">
+              <a class="footer-cta-btn" href="tel:15180" target="_blank" rel="noopener">احجز الآن</a>
+              <div class="footer-socials">
+                <a href="https://www.facebook.com/drmohamedalalem" class="footer-social-link" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="https://www.instagram.com/dr_alem?igsh=a24yOTFndWZtajEy" class="footer-social-link" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                <a href="https://www.youtube.com/@DrMohamedAlAlem" class="footer-social-link" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke-linejoin="round"/></svg></a>
+                <a href="https://www.linkedin.com/in/dr-mohamed-al-alem-731b51287?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="footer-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://www.tiktok.com/@dralem?_r=1&_t=ZS-97JoMs6cx8r" class="footer-social-link" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.76a4.85 4.85 0 01-1.02-.07z"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- مواعيد العمل -->
+          <div class="footer-col footer-col-hours">
+            <h4 class="footer-col-title">مواعيد العمل</h4>
+            <ul class="footer-hours-list">
+              <li>
+                <span class="footer-hours-day">السبت — الخميس</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- اتصال سريع -->
+          <div class="footer-col footer-col-contact">
+            <h4 class="footer-col-title">اتصال سريع</h4>
+            <ul class="footer-contact-list">
+              <li>
+                <span class="footer-contact-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span>خط ساخن: <a href="tel:15180" dir="ltr" style="font-weight:700;color:var(--mint);">15180</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- زرار الحجز + السوشيال (تم تأخيره) -->
+          <div class="footer-cta-wrap footer-col">
+            <a class="footer-cta-btn" href="tel:15180" target="_blank" rel="noopener">احجز الآن</a>
+            <div class="footer-socials">
+              <a href="https://www.facebook.com/drmohamedalalem" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/dr_alem?igsh=a24yOTFndWZtajEy" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@DrMohamedAlAlem" class="footer-social-link" aria-label="YouTube" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/dr-mohamed-al-alem-731b51287?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@dralem?_r=1&_t=ZS-97JoMs6cx8r" class="footer-social-link" aria-label="TikTok" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.76a4.85 4.85 0 01-1.02-.07z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- فروع العيادة -->
+          <div class="footer-col footer-col-address">
+            <h4 class="footer-col-title">فروع العيادة</h4>
+            <div style="margin-top:4px; display:flex; flex-direction:column; gap:10px;">
+              <a href="https://maps.app.goo.gl/bs6NiFQmVSgA89Fd9" target="_blank" rel="noopener" style="font-size:0.82rem; font-weight:400; color:rgba(200,202,208,0.85); display:flex; align-items:center; gap:10px; text-decoration:none; transition:color 0.2s;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                الشيخ زايد
+              </a>
+              <a href="https://maps.app.goo.gl/F4Pe6ntMvNkKnz8o7" target="_blank" rel="noopener" style="font-size:0.82rem; font-weight:400; color:rgba(200,202,208,0.85); display:flex; align-items:center; gap:10px; text-decoration:none; transition:color 0.2s;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                مصر الجديدة
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- الشريط السفلي -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 مركز د.العالم — جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+  
+
+
+  <script>
+  (function() {
+    function alignWaBtn() {
+      var waBtn = document.getElementById('waFloatBtn');
+      var pageWrap = document.getElementById('page-wrap');
+      if (!waBtn || !pageWrap) return;
+      var rect = pageWrap.getBoundingClientRect();
+      var gapR = window.innerWidth - rect.right;
+      waBtn.style.setProperty('right', Math.max(gapR / 6, 2) + 'px', 'important');
+      waBtn.style.setProperty('left', 'auto', 'important');
+    }
+    window.addEventListener('load', function() { setTimeout(alignWaBtn, 300); });
+    window.addEventListener('resize', alignWaBtn);
+    document.addEventListener('DOMContentLoaded', alignWaBtn);
+  })();
+  </script>
+  <script src="assets/js/main-ar.js"></script>
+<script>
+var SHEET_URL_AR = 'https://script.google.com/macros/s/AKfycbwMZ2XWqzMZmYblsw66HuOneWbPEDMmPg57c0FtGGHFE1QkaFQ90bf_l5WbBUzc4PPB/exec';
+
+function showMsg(formEl, msg, isError) {
+  var existing = formEl.querySelector('.form-msg');
+  if (existing) existing.remove();
+  var div = document.createElement('div');
+  div.className = 'form-msg';
+  div.textContent = msg;
+  div.style.cssText = 'margin-top:10px;padding:10px;border-radius:6px;text-align:center;font-weight:600;' + (isError ? 'background:#e53;color:#fff;' : 'background:#d4edda;color:#155724;');
+  formEl.appendChild(div);
+  setTimeout(function() { if (div.parentNode) div.remove(); }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('heroBookingFormAr');
+  if (!form) return;
+
+  var serviceSelect = form.querySelector('[name="service"]');
+  if (serviceSelect) {
+    serviceSelect.addEventListener('change', function() {
+      this.classList.toggle('selected', this.value !== '');
+    });
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var name = form.querySelector('[name="name"]');
+    var phone = form.querySelector('[name="phone"]');
+    var service = form.querySelector('[name="service"]');
+    var valid = true;
+
+    [name, phone, service].forEach(function(el) {
+      if (!el.value) { el.classList.add('error'); valid = false; }
+      else el.classList.remove('error');
+    });
+    if (!valid) return;
+
+    var submitBtn = form.querySelector('[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.classList.add('loading'); submitBtn.textContent = 'جاري الإرسال'; }
+
+    var data = { name: name.value, phone: phone.value, service: service.value };
+
+    fetch(SHEET_URL_AR, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' }
+    })
+    .then(function() {
+      form.reset();
+      showMsg(form, '✅ تم إرسال طلب الحجز بنجاح!');
+      window.location.hash = 'booked';
+    })
+    .catch(function() {
+      showMsg(form, '❌ حدث خطأ، حاول مرة أخرى.', true);
+    })
+    .finally(function() {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.classList.remove('loading'); submitBtn.textContent = 'إرسال'; }
+    });
+  });
+});
+</script>
+  </div><!-- end page-wrap -->
+
+  <!-- Floating WhatsApp Button (outside page-wrap to fix transform/fixed issue) -->
+  <a href="https://wa.me/201226730240" class="wa-float wa-float--ar" target="_blank" rel="noopener" aria-label="واتساب" id="waFloatBtn" style="opacity:1;transition:opacity 0.3s,visibility 0.3s;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</body>
+</html>
